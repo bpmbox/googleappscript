@@ -56,9 +56,15 @@ const clientEntrypoints = [
   },
   {
     name: 'CLIENT - Sidebar About Page',
-    entry: './src/client/sidebar-about-page/index.js',
+    entry: './src/client/sidebar-about-page/index.tsx',
     filename: 'sidebar-about-page',
     template: './src/client/sidebar-about-page/index.html',
+  },
+  {
+    name: 'CLIENT - チャット文字おこし',
+    entry: './src/client/chat/index.js',
+    filename: 'chat',
+    template: './src/client/chat/index.html',
   },
 ];
 
@@ -204,8 +210,9 @@ const gasWebpackDevServerPath = require.resolve(
 
 // webpack settings for devServer https://webpack.js.org/configuration/dev-server/
 const devServer = {
-  port: PORT,
-  https: true,
+  port: 3000,
+  host: '0.0.0.0',
+  allowedHosts: ['localhost', '.gitpod.io'],
   // run our own route to serve the package google-apps-script-webpack-dev-server
   before: app => {
     // this '/gas/' path needs to match the path loaded in the iframe in dev/index.js

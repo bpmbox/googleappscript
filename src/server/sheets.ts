@@ -25,9 +25,3 @@ export const deleteSheet = sheetIndex => {
   return getSheetsData();
 };
 
-export const setActiveSheet = sheetName => {
-  SpreadsheetApp.getActive()
-    .getSheetByName(sheetName)
-    .activate();
-  return getSheetsData();
-};

@@ -18,7 +18,7 @@ const FormInput = ({ submitNewSheet }) => {
     <div className="formBlock">
       <form onSubmit={handleSubmit}>
         <div>
-          <span>Add a sheet</span>
+          <span>Add a sheetsssss</span>
         </div>
         <div>
           <input

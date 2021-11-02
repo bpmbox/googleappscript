@@ -19,7 +19,7 @@ const DevServer = () => {
         .then(response => {
           iframe.current.contentWindow.postMessage(
             { type: 'RESPONSE', id, status: 'SUCCESS', response },
-            `https://localhost:${PORT}`
+            `https://3000-maroon-wombat-edp1a7z0.ws-us15.gitpod.io`
           );
         })
         .catch(err => {
@@ -30,7 +30,7 @@ const DevServer = () => {
               status: 'ERROR',
               response: err,
             },
-            `https://localhost:${PORT}`
+            `https://3000-maroon-wombat-edp1a7z0.ws-us15.gitpod.io`
           );
         });
     };
@@ -57,7 +57,7 @@ const DevServer = () => {
         // The "/gas/" path here must match the path where the custom dev server is being loaded.
         // See webpack.config.js "devServer" "before" settings.
         // Filename extension "-impl" must match webpack.config.js clientConfigs filename settings for development.
-        src={`https://localhost:${PORT}/gas/${FILENAME}-impl.html`}
+        src={`https://3000-maroon-wombat-edp1a7z0.ws-us15.gitpod.io/gas/${FILENAME}-impl.html`}
       />
     </div>
   );
