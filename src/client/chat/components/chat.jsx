@@ -9,10 +9,14 @@ import * as test from '../util/chat'
 //require("./chateng.js")
 const { serverFunctions } = server;
 //test.alt()
-const Chat = () => {
+const Chat = (prop) => {
   const [names, setNames] = useState([]);
-
+  alert(prop.a)
+  alert("tet")
+  //alert(prop.a)
+  //
   useEffect(() => {
+	alert(prop.a)
     // Call a server global function here and handle the response with .then() and .catch()
     serverFunctions
       .getSheetsData()
@@ -48,6 +52,7 @@ const Chat = () => {
 
   return (
 	<div class="chat-ui-canvas">
+	
 		<div id="header" class="header header-scrolled">
 			<div class="top-icons">
 				<div class="back-arrow">
@@ -73,6 +78,14 @@ const Chat = () => {
 					<p>
 						CHROME 対応　マイクを用意してください.
 					</p>
+
+					<iframe class="video" id="popup-YouTube-player" width="260" height="315" src="https://www.YouTube.com/embed/Afr77al2_JM?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+  <button id="play">play</button>
+  <button id="pause">pause</button>
+  <button id="stop">stop</button>
+  <button id="clear">clear</button>
+
+  
 				</div>
 				<div class="message-timestamp">
 					<p>Today 10:02</p>

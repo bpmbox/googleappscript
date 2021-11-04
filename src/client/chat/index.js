@@ -7,7 +7,7 @@ import './components/chateng.js'
 
 const Link = ReactRouterDOM.Link;
 const Route = ReactRouterDOM.Route;
-
+/*
 const App = () => (
   <ReactRouterDOM.HashRouter>
     <ul>
@@ -18,8 +18,8 @@ const App = () => (
     <Route path="/video" component={Video} />
   </ReactRouterDOM.HashRouter>
 )
-
+*/
 
 //ReactDOM.render(<App />, document.querySelector('#index'));
 
-ReactDOM.render(<Chat />, document.getElementById('index'));
+ReactDOM.render(<Chat a="1111"/>, document.getElementById('index'));

@@ -41,11 +41,21 @@ const SheetEditor = () => {
       alert(error);
     }
   };
+  //at this point chage object data
+  const form = (ps) =>{ 
+    if(ps==1)
+      return <FormInput submitNewSheet={submitNewSheet} />
+      if(ps==2)
+      return <div><FormInput submitNewSheet={submitNewSheet} /><FormInput submitNewSheet={submitNewSheet} /></div>
+
+    }
+
+
 
   return (
     <div style={{ padding: '3px', overflowX: 'hidden' }}>
       <p>
-        <b>☀️ Bootstrap demo! ☀️</b>
+        <b>☀️ Bootstrap dddddddddwewewewewedddddelllllllllllmo! ☀️</b>
       </p>
       <p>
         This is a sample app that uses the <code>react-bootstrap</code> library
@@ -54,7 +64,7 @@ const SheetEditor = () => {
         <span className="text-danger">&times;</span> next to the sheet name to
         delete it.
       </p>
-      <FormInput submitNewSheet={submitNewSheet} />
+     {form(2)}
       <ListGroup>
         <TransitionGroup className="sheet-list">
           {names.length > 0 &&

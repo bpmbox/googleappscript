@@ -204,7 +204,7 @@ window.onload = function () {
             //登録終了の処理
             for (var i = event.resultIndex; results.length; i++) {
                 //alert(i)
-                console.log("final = "+results[i])
+                console.log("final = " + results[i])
                 //for (var i = 0; i < 0; i++) {
                 //認識完了の際に　Finalに入る  
                 if (results[i].isFinal) {
@@ -219,7 +219,7 @@ window.onload = function () {
                                 //showStatus('Cell set to reference value: ' + value);
                                 // element.disabled = false;
                                 spflg = message
-                                
+
                                 //Logger.log(message)
                                 //alert(message)
                                 //speechSynthesis.speak(msg);
@@ -275,7 +275,7 @@ window.onload = function () {
                                 element.disabled = false;
                             })
                         .firebase(msg.text);
-                    */    
+                    */
 
                     /*************************************************
                      //ここでデータの登録 processmaker へ登録

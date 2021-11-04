@@ -12,6 +12,7 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
 const moduleToCdn = require('module-to-cdn');
 
+
 /*********************************
  *    set up environment variables
  ********************************/
@@ -43,6 +44,12 @@ const devDialogEntry = './dev/index.js';
 // define client entry points and output names
 const clientEntrypoints = [
   {
+    name: 'DHTMLX',
+    entry: './src/client/src/index.js',
+    filename: 'dhtmx', // we'll add the .html suffix to these
+    template: './src/client/public/index.html',
+  },
+  {
     name: 'CLIENT - Dialog Demo',
     entry: './src/client/dialog-demo/index.js',
     filename: 'dialog-demo', // we'll add the .html suffix to these
@@ -65,6 +72,12 @@ const clientEntrypoints = [
     entry: './src/client/chat/index.js',
     filename: 'chat',
     template: './src/client/chat/index.html',
+  },
+  {
+    name: 'CLIENTen - チャット文字おこし',
+    entry: './src/client/chaten/index.js',
+    filename: 'chaten',
+    template: './src/client/chaten/index.html',
   },
 ];
 
@@ -91,7 +104,7 @@ const copyFilesConfig = {
         {
           from: copyAppscriptEntry,
           to: destination,
-        },
+        }
       ],
     }),
   ],
@@ -118,6 +131,10 @@ const clientConfig = {
   module: {
     rules: [
       // typescript config
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]'
+      },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -212,7 +229,9 @@ const gasWebpackDevServerPath = require.resolve(
 const devServer = {
   port: 3000,
   host: '0.0.0.0',
-  allowedHosts: ['localhost', '.gitpod.io'],
+  disableHostCheck: true,
+  //public: require('child_process').execSync('gp url 8080').toString().trim(),
+  allowedHosts: ['localhost', 'docs.google.com'],
   // run our own route to serve the package google-apps-script-webpack-dev-server
   before: app => {
     // this '/gas/' path needs to match the path loaded in the iframe in dev/index.js
@@ -223,13 +242,13 @@ const devServer = {
   },
 };
 
-if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
+//if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
   // use key and cert settings only if they are found
-  devServer.https = {
-    key: fs.readFileSync(keyPath),
-    cert: fs.readFileSync(certPath),
-  };
-}
+//  devServer.https = {
+//    key: fs.readFileSync(keyPath),
+//    cert: fs.readFileSync(certPath),
+//  };
+//}
 
 // webpack settings for the development client wrapper
 const devClientConfigs = clientEntrypoints.map(clientEntrypoint => {

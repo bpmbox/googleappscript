@@ -5,7 +5,8 @@ export const onOpen = () => {
     .addItem('Sheet Editor (Bootstrap)', 'openDialogBootstrap')
     .addItem('About me', 'openAboutSidebar')
     .addItem("Open Chat",'openChat')
-    .addItem("vanila",'vanila')
+    .addItem("Open Chaten",'openChaten')
+    .addItem("open dhtmx",'openDhtmlx')
 
   menu.addToUi();
 };
@@ -24,9 +25,9 @@ export const openDialog = () => {
   //SpreadsheetApp.getUi().showModalDialog(html, 'Sheet Editor');
 };
 
-export const vanila = () => {
+export const openDhtmlx = () => {
   var response = Browser.msgBox("ようこそ!");
-  const html = HtmlService.createHtmlOutputFromFile('VanillaApp')
+  const html = HtmlService.createHtmlOutputFromFile('dhtmx')
     .setWidth(600)
     .setHeight(600);
     SpreadsheetApp.getUi().showSidebar(html);
@@ -34,9 +35,19 @@ export const vanila = () => {
 
 export const openChat = () => {
   //var response = Browser.msgBox("ようこそ!");
-  const html = HtmlService.createHtmlOutputFromFile('chat')
-    .setWidth(600)
-    .setHeight(600);
+  const html = HtmlService.createTemplateFromFile('chat')
+  .evaluate()
+    .setTitle("SIDEBAR_TITLE")
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+    SpreadsheetApp.getUi().showSidebar(html);
+};
+
+export const openChaten = () => {
+  //var response = Browser.msgBox("ようこそ!");
+  const html = HtmlService.createTemplateFromFile('chaten')
+  .evaluate()
+    .setTitle("SIDEBAR_TITLE")
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME);
     SpreadsheetApp.getUi().showSidebar(html);
 };
 
