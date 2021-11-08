@@ -150,7 +150,7 @@ window.onload = function () {
         recognition.count = 0;
 
         recognition.onsoundstart = function () {
-            document.getElementById("status").innerHTML = "wwwwwwwwwwwwwwwww認識中";
+            document.getElementById("status").innerHTML = "認識中";
         };
         recognition.onnomatch = function () {
             document.getElementById("status").innerHTML = "もう一度試してください";

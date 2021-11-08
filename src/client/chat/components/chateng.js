@@ -144,7 +144,7 @@ window.onload = function () {
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
         var recognition = new webkitSpeechRecognition();
         recognition.lang = "ja";
-        recognition.lang = "en";
+        //recognition.lang = "en";
         recognition.interimResults = true;
         recognition.continuous = true;
         recognition.count = 0;
@@ -207,7 +207,7 @@ window.onload = function () {
                 console.log("final = " + results[i])
                 //for (var i = 0; i < 0; i++) {
                 //認識完了の際に　Finalに入る  
-                if (results[i].isFinal) {
+                if (i == 0){//results[i].isFinal) {
                     document.getElementById("message-input").value = results[i][0].transcript;
                     onPutChatClick(results[i][0].transcript)
 
@@ -242,8 +242,8 @@ window.onload = function () {
                     // テキストスピーチ開始
                     msg.text = results[i][0].transcript; //document.querySelector("#text1").value; // しゃべる内容
                     //言語設定
-                    //msg.lang = "ja-JP";
-                    msg.lang = "en-US";
+                    msg.lang = "ja-JP";
+                    //msg.lang = "en-US";
                     /*******************************************************/
                     //ここでしゃべる    コメントあると
                     /*******************************************************/

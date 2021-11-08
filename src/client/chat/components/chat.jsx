@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import FormInput from './FormInput';
 import SheetButton from './SheetButton';
-
+//import { StyleSheet, Text, View } from 'react-native-web';
+////
 // This is a wrapper for google.script.run that lets us use promises.
 import server from '../../utils/server';
 import * as test from '../util/chat'
@@ -11,12 +12,12 @@ const { serverFunctions } = server;
 //test.alt()
 const Chat = (prop) => {
   const [names, setNames] = useState([]);
-  alert(prop.a)
-  alert("tet")
+  //alert(prop.a)
+  //alert("tet")
   //alert(prop.a)
   //
   useEffect(() => {
-	alert(prop.a)
+	//alert(prop.a)
     // Call a server global function here and handle the response with .then() and .catch()
     serverFunctions
       .getSheetsData()
@@ -52,7 +53,6 @@ const Chat = (prop) => {
 
   return (
 	<div class="chat-ui-canvas">
-	
 		<div id="header" class="header header-scrolled">
 			<div class="top-icons">
 				<div class="back-arrow">

@@ -1,9 +1,13 @@
 import * as publicUiFunctions from './ui';
 import * as publicSheetFunctions from './sheets';
+import * as firebase from './firebase';
+import * as graphql from './graphql';
+
 //import * as ind as from './index'
 //import * as publicChatFunctions from './chat';
 
 // Expose public functions by attaching to `global`
+global.graphql = graphql.getAssignedPullRequests;
 global.onOpen = publicUiFunctions.onOpen;
 global.openDialog = publicUiFunctions.openDialog;
 global.openDialogBootstrap = publicUiFunctions.openDialogBootstrap;
@@ -22,6 +26,7 @@ global.setNextRange = setNextRange;
 global.sample_activate_right_cell = sample_activate_right_cell;
 global.myFunction2 = myFunction2;
 global.getNextCellData = getNextCellData;
+global.imports = firebase.imports;
 
 
 /************************************************************************

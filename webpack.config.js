@@ -81,6 +81,24 @@ const clientEntrypoints = [
   },
 ];
 
+const appDirectory = path.resolve(__dirname, './');
+
+const babelLoaderConfiguration = {
+  test: /\.js$/,
+  include: [
+    path.resolve(appDirectory, 'index.web.js'),
+    path.resolve(appDirectory, 'src')
+  ],
+  use: {
+    loader: 'babel-loader',
+    options: {
+      cacheDirectory: true,
+      plugins: ['react-native-web'], // ここがポイント
+      presets: ['react-native']
+    }
+  }
+};
+
 // define certificate locations
 // see "npm run setup:https" script in package.json
 const keyPath = path.resolve(__dirname, './certs/key.pem');
@@ -363,3 +381,4 @@ module.exports = [
   // 5. Create a development dialog bundle for each client entrypoint during development.
   ...(isProd ? [] : devClientConfigs),
 ];
+

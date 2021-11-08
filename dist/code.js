@@ -1,3 +1,5 @@
+function graphql() {}
+
 function onOpen() {}
 
 function openDialog() {}
@@ -33,6 +35,8 @@ function sample_activate_right_cell() {}
 function myFunction2() {}
 
 function getNextCellData() {}
+
+function imports() {}
 
 !function(e, a) {
     for (var i in a) e[i] = a[i];
@@ -80,7 +84,7 @@ function getNextCellData() {}
         return __webpack_require__.d(getter, "a", getter), getter;
     }, __webpack_require__.o = function(object, property) {
         return Object.prototype.hasOwnProperty.call(object, property);
-    }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 2);
+    }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 4);
 }([ function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
     __webpack_require__.d(__webpack_exports__, "b", (function() {
@@ -149,6 +153,35 @@ function getNextCellData() {}
         var sheets = getSheets();
         return SpreadsheetApp.getActive().deleteSheet(sheets[sheetIndex]), (0, exports.getSheetsData)();
     };
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    exports.__esModule = !0, exports.imports = exports.firebase = void 0;
+    var firebase = function() {
+        this.getSheetsData = function() {
+            return "test";
+        };
+    };
+    exports.firebase = firebase, exports.imports = function(filename) {
+        return HtmlService.createHtmlOutputFromFile(filename).getContent();
+    };
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    exports.__esModule = !0, exports.getAssignedPullRequests = void 0;
+    exports.getAssignedPullRequests = function() {
+        var option = function(graphql) {
+            return {
+                method: "post",
+                contentType: "application/json",
+                headers: {
+                    Authorization: "bearer "
+                },
+                payload: JSON.stringify({
+                    query: graphql
+                })
+            };
+        }('\n{\n  user(login: "abeyuya") {\n    organizations(last: 5) {\n      nodes {\n        name\n        url\n        repositories(last:100) {\n          nodes {\n            name\n            url\n            pullRequests(last:30 states:[OPEN] ) {\n              nodes {\n                url\n                title\n                reviewRequests(last:10) {\n                  nodes {\n                    requestedReviewer {\n                      ... on User {\n                        url\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n'), res = UrlFetchApp.fetch("https://api.github.com/graphql", option);
+        return JSON.parse(res.getContentText());
+    };
 }, function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
     __webpack_require__.r(__webpack_exports__), function(global) {
@@ -169,7 +202,8 @@ function getNextCellData() {}
         })), __webpack_require__.d(__webpack_exports__, "myFunction2", (function() {
             return myFunction2;
         }));
-        var _ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0), _sheets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+        var _ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0), _sheets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1), _firebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2), _graphql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
+        global.graphql = _graphql__WEBPACK_IMPORTED_MODULE_3__["getAssignedPullRequests"], 
         global.onOpen = _ui__WEBPACK_IMPORTED_MODULE_0__["b"], global.openDialog = _ui__WEBPACK_IMPORTED_MODULE_0__["g"], 
         global.openDialogBootstrap = _ui__WEBPACK_IMPORTED_MODULE_0__["h"], global.openAboutSidebar = _ui__WEBPACK_IMPORTED_MODULE_0__["c"], 
         global.getSheetsData = _sheets__WEBPACK_IMPORTED_MODULE_1__["getSheetsData"], global.addSheet = _sheets__WEBPACK_IMPORTED_MODULE_1__["addSheet"], 
@@ -178,7 +212,7 @@ function getNextCellData() {}
         global.openChaten = _ui__WEBPACK_IMPORTED_MODULE_0__["e"], global.doGet = _ui__WEBPACK_IMPORTED_MODULE_0__["a"], 
         global.setActiveValue = setActiveValue, global.getMainSheet = getMainSheet, global.setNextRange = setNextRange, 
         global.sample_activate_right_cell = sample_activate_right_cell, global.myFunction2 = myFunction2, 
-        global.getNextCellData = getNextCellData;
+        global.getNextCellData = getNextCellData, global.imports = _firebase__WEBPACK_IMPORTED_MODULE_2__["imports"];
         var getNextCellData = function() {
             var rng = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getActiveCell();
             myFunction2();
@@ -207,7 +241,7 @@ function getNextCellData() {}
         }, myFunction2 = function() {
             return console.log("macro,s myFunnc2"), SpreadsheetApp.getActive().getRange("A1").getValue();
         };
-    }.call(this, __webpack_require__(3));
+    }.call(this, __webpack_require__(5));
 }, function(module, exports) {
     var g;
     g = function() {
